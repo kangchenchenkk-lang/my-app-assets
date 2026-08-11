@@ -1,0 +1,337 @@
+<style>
+:root {
+  color-scheme: light;
+  --surface: #F7F7F8;
+  --surface-muted: #EFEFF2;
+  --text: #171717;
+  --text-muted: #52525B;
+  --border: rgba(23, 23, 23, 0.12);
+  --brand: #4B3FE3;
+  --brand-soft: #F2F7FF;
+  --brand-soft-strong: #E5EAFF;
+  --brand-text: #1A1759;
+  --brand-on: #FFFFFF;
+  --chart-series-1: #3C2ECA;
+  --chart-series-2: #A9AEFF;
+  --chart-series-3: #6F6FFF;
+  --chart-series-4: #22A5F7;
+  --chart-other: #D3D4DA;
+  --accent: #27D2BF;
+  --accent-2: #F87454;
+  --accent-soft: #EAFBF8;
+  --accent-text: #0F766E;
+  --success: #1DC981;
+  --warning: #EFAA17;
+  --danger: #E8463A;
+  --radius: 8px;
+  --radius-card: 12px;
+  --radius-full: 999px;
+  --spacer-4: 4px;
+  --spacer-8: 8px;
+  --spacer-12: 12px;
+  --spacer-16: 16px;
+  --spacer-20: 20px;
+  --spacer-24: 24px;
+  --font-sans: "SF Pro Text", "PingFang SC", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-metric: "Inter", "SF Pro Text", "PingFang SC", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-strong: 600;
+  --text-caption: 12px/18px;
+  --text-body: 14px/20px;
+  --text-title: 16px/24px;
+  --text-code: 13px/20px;
+}
+:root[data-widget-theme="dark"] {
+  color-scheme: dark;
+  --surface: #171717;
+  --surface-muted: #262626;
+  --text: #E5E5E5;
+  --text-muted: #A1A1AA;
+  --border: rgba(229, 229, 229, 0.12);
+  --brand: #6054F1;
+  --brand-soft: #1A1759;
+  --brand-soft-strong: #3C2ECA;
+  --brand-text: #CFD8FF;
+  --chart-series-1: #4B3FE3;
+  --chart-series-2: #A9AEFF;
+  --chart-series-3: #6F6FFF;
+  --chart-series-4: #22A5F7;
+  --accent-soft: #123F3C;
+  --accent-text: #CCFBF1;
+}
+.widget {
+  color: var(--text);
+  background: transparent;
+  font: var(--weight-regular) var(--text-body) var(--font-sans);
+  letter-spacing: 0;
+}
+</style>
+
+<svg viewBox="0 0 920 1080" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" data-dynamic-ui-widget data-template="swimlane-v2">
+
+  <defs>
+    <marker id="ab" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M1 1 L7 4 L1 7 Z" fill="var(--brand)"/>
+    </marker>
+    <marker id="aac" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M1 1 L7 4 L1 7 Z" fill="var(--accent)"/>
+    </marker>
+    <marker id="as1" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M1 1 L7 4 L1 7 Z" fill="var(--chart-series-1)"/>
+    </marker>
+    <marker id="aw" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M1 1 L7 4 L1 7 Z" fill="var(--warning)"/>
+    </marker>
+    <marker id="am" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M1 1 L7 4 L1 7 Z" fill="var(--text-muted)"/>
+    </marker>
+  </defs>
+
+  <!-- ====== TITLE ====== -->
+  <text x="460" y="26" text-anchor="middle" font-family="var(--font-sans)" font-size="18" font-weight="600" fill="var(--text)">AI 漫剧 Agent 全流程泳道图</text>
+  <text x="460" y="46" text-anchor="middle" font-family="var(--font-sans)" font-size="12" fill="var(--text-muted)">用户输入 → 路由分发 → 内容生成 → 记忆写入 → 增量编排 → 前端展示</text>
+
+  <!-- ====== LANE HEADERS ====== -->
+  <rect x="20" y="58" width="880" height="36" rx="0" fill="var(--surface-muted)"/>
+
+  <!-- Lane 1: 用户 -->
+  <rect x="20" y="58" width="100" height="36" rx="0" fill="var(--brand-soft)"/>
+  <text x="70" y="81" text-anchor="middle" font-family="var(--font-sans)" font-size="13" font-weight="600" fill="var(--brand-text)">用户</text>
+
+  <!-- Lane 2: MO -->
+  <rect x="120" y="58" width="140" height="36" rx="0" fill="var(--brand)"/>
+  <text x="190" y="81" text-anchor="middle" font-family="var(--font-sans)" font-size="13" font-weight="600" fill="var(--brand-on)">MO 总控</text>
+
+  <!-- Lane 3: 大纲 Agent -->
+  <rect x="260" y="58" width="130" height="36" rx="0" fill="var(--chart-series-1)"/>
+  <text x="325" y="81" text-anchor="middle" font-family="var(--font-sans)" font-size="13" font-weight="600" fill="var(--brand-on)">大纲 Agent</text>
+
+  <!-- Lane 4: 集 Agent -->
+  <rect x="390" y="58" width="130" height="36" rx="0" fill="var(--chart-series-3)"/>
+  <text x="455" y="81" text-anchor="middle" font-family="var(--font-sans)" font-size="13" font-weight="600" fill="var(--brand-on)">集 Agent</text>
+
+  <!-- Lane 5: 记忆层 -->
+  <rect x="520" y="58" width="160" height="36" rx="0" fill="var(--surface)" stroke="var(--border)" stroke-width="0.5"/>
+  <text x="600" y="73" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="600" fill="var(--text)">记忆层</text>
+  <text x="600" y="88" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--text-muted)">项目层 · 资产层 · State Ctx</text>
+
+  <!-- Lane 6: DAG -->
+  <rect x="680" y="58" width="120" height="36" rx="0" fill="var(--surface)" stroke="var(--warning)" stroke-width="1"/>
+  <text x="740" y="81" text-anchor="middle" font-family="var(--font-sans)" font-size="13" font-weight="600" fill="var(--warning)">DAG 引擎</text>
+
+  <!-- Lane 7: 前端 -->
+  <rect x="800" y="58" width="100" height="36" rx="0" fill="var(--accent-soft)"/>
+  <text x="850" y="81" text-anchor="middle" font-family="var(--font-sans)" font-size="13" font-weight="600" fill="var(--accent-text)">前端</text>
+
+  <!-- Vertical dividers -->
+  <line x1="120" y1="58" x2="120" y2="1070" stroke="var(--border)" stroke-width="0.5"/>
+  <line x1="260" y1="58" x2="260" y2="1070" stroke="var(--border)" stroke-width="0.5"/>
+  <line x1="390" y1="58" x2="390" y2="1070" stroke="var(--border)" stroke-width="0.5"/>
+  <line x1="520" y1="58" x2="520" y2="1070" stroke="var(--border)" stroke-width="0.5"/>
+  <line x1="680" y1="58" x2="680" y2="1070" stroke="var(--border)" stroke-width="0.5"/>
+  <line x1="800" y1="58" x2="800" y2="1070" stroke="var(--border)" stroke-width="0.5"/>
+
+  <!-- ============================================================ -->
+  <!-- PHASE A: 大纲阶段 -->
+  <!-- ============================================================ -->
+  <rect x="20" y="104" width="880" height="170" rx="0" fill="var(--brand-soft)" opacity="0.25"/>
+  <rect x="0" y="104" width="22" height="170" rx="0" fill="var(--brand)"/>
+  <text x="10" y="215" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="600" fill="var(--brand-on)" transform="rotate(-90, 10, 215)">大纲阶段</text>
+
+  <!-- A1: 用户 → MO -->
+  <line x1="70" y1="140" x2="185" y2="140" stroke="var(--brand)" stroke-width="1.5" marker-end="url(#ab)"/>
+  <rect x="95" y="126" width="100" height="18" rx="4" fill="var(--surface)"/>
+  <text x="145" y="139" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--text)">创意输入 / 修改</text>
+
+  <!-- A2: MO → 大纲 Agent -->
+  <line x1="190" y1="168" x2="320" y2="168" stroke="var(--brand)" stroke-width="1.5" marker-end="url(#ab)"/>
+  <rect x="210" y="154" width="100" height="18" rx="4" fill="var(--brand-soft)"/>
+  <text x="260" y="167" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--brand-text)">JSON 路由</text>
+
+  <!-- A3: 大纲 Agent → 记忆层 -->
+  <line x1="325" y1="195" x2="595" y2="195" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#aac)"/>
+  <rect x="370" y="181" width="130" height="18" rx="4" fill="var(--accent-soft)"/>
+  <text x="435" y="194" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--accent-text)">写入 项目层 + 资产层</text>
+
+  <rect x="530" y="216" width="140" height="22" rx="4" fill="var(--surface)"/>
+  <text x="600" y="231" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--text-muted)">项目层: 剧集信息+情节概要</text>
+  <rect x="530" y="242" width="140" height="22" rx="4" fill="var(--surface)"/>
+  <text x="600" y="257" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--text-muted)">资产层: 角色初稿</text>
+
+  <!-- A4: 大纲 Agent → 前端 -->
+  <line x1="325" y1="222" x2="845" y2="222" stroke="var(--chart-series-1)" stroke-width="1.5" marker-end="url(#as1)"/>
+  <rect x="500" y="208" width="130" height="18" rx="4" fill="var(--surface)"/>
+  <text x="565" y="221" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--text)">display: 剧本大纲</text>
+
+  <!-- Phase separator -->
+  <line x1="20" y1="274" x2="900" y2="274" stroke="var(--border)" stroke-width="1" stroke-dasharray="6,3"/>
+
+  <!-- ============================================================ -->
+  <!-- PHASE B: 单集阶段 -->
+  <!-- ============================================================ -->
+  <rect x="20" y="284" width="880" height="240" rx="0" fill="var(--accent-soft)" opacity="0.12"/>
+  <rect x="0" y="284" width="22" height="240" rx="0" fill="var(--accent)"/>
+  <text x="10" y="428" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="600" fill="var(--brand-on)" transform="rotate(-90, 10, 428)">单集阶段</text>
+
+  <!-- B1: 用户 → MO -->
+  <line x1="70" y1="320" x2="185" y2="320" stroke="var(--brand)" stroke-width="1.5" marker-end="url(#ab)"/>
+  <rect x="95" y="306" width="100" height="18" rx="4" fill="var(--surface)"/>
+  <text x="145" y="319" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--text)">确认大纲 / 操作</text>
+
+  <!-- B2: MO → 集 Agent -->
+  <line x1="190" y1="348" x2="450" y2="348" stroke="var(--brand)" stroke-width="1.5" marker-end="url(#ab)"/>
+  <rect x="250" y="334" width="100" height="18" rx="4" fill="var(--brand-soft)"/>
+  <text x="300" y="347" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--brand-text)">JSON 路由</text>
+
+  <!-- B3: 集 Agent 调度 Skills -->
+  <rect x="400" y="370" width="110" height="50" rx="6" fill="var(--surface)" stroke="var(--chart-series-3)" stroke-width="1"/>
+  <text x="455" y="388" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="500" fill="var(--chart-series-3)">调度 Skills</text>
+  <text x="455" y="405" text-anchor="middle" font-family="var(--font-sans)" font-size="9" fill="var(--text-muted)">大纲 · 主体/场景 · 分镜</text>
+
+  <!-- B4: 集 Agent → 记忆层 (一次性写入三层) -->
+  <line x1="455" y1="420" x2="595" y2="420" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#aac)"/>
+  <rect x="470" y="406" width="118" height="18" rx="4" fill="var(--accent-soft)"/>
+  <text x="529" y="419" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--accent-text)">一次性写入三层</text>
+
+  <rect x="530" y="442" width="140" height="22" rx="4" fill="var(--surface)"/>
+  <text x="600" y="457" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--text-muted)">项目层: 情节概要更新</text>
+  <rect x="530" y="468" width="140" height="22" rx="4" fill="var(--surface)"/>
+  <text x="600" y="483" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--text-muted)">资产层: 主体 + 场景</text>
+  <rect x="530" y="494" width="140" height="22" rx="4" fill="var(--surface)"/>
+  <text x="600" y="509" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--text-muted)">State Ctx: 故事大纲+分镜</text>
+
+  <!-- B5: DAG 记录依赖 -->
+  <line x1="600" y1="515" x2="735" y2="515" stroke="var(--warning)" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#aw)"/>
+  <rect x="615" y="500" width="100" height="18" rx="4" fill="var(--surface)"/>
+  <text x="665" y="513" text-anchor="middle" font-family="var(--font-sans)" font-size="9" fill="var(--warning)">记录节点依赖</text>
+
+  <!-- B6: 集 Agent → 前端 -->
+  <line x1="455" y1="348" x2="845" y2="348" stroke="var(--chart-series-1)" stroke-width="1.5" marker-end="url(#as1)"/>
+  <rect x="560" y="334" width="130" height="18" rx="4" fill="var(--surface)"/>
+  <text x="625" y="347" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--text)">display: 策划文档</text>
+
+  <!-- Phase separator -->
+  <line x1="20" y1="524" x2="900" y2="524" stroke="var(--border)" stroke-width="1" stroke-dasharray="6,3"/>
+
+  <!-- ============================================================ -->
+  <!-- PHASE C: 增量修改 -->
+  <!-- ============================================================ -->
+  <rect x="20" y="534" width="880" height="220" rx="0" fill="var(--warning)" opacity="0.06"/>
+  <rect x="0" y="534" width="22" height="220" rx="0" fill="var(--warning)"/>
+  <text x="10" y="665" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="600" fill="var(--brand-on)" transform="rotate(-90, 10, 665)">增量修改</text>
+
+  <!-- C1: 用户 → MO -->
+  <line x1="70" y1="570" x2="185" y2="570" stroke="var(--brand)" stroke-width="1.5" marker-end="url(#ab)"/>
+  <rect x="95" y="556" width="100" height="18" rx="4" fill="var(--surface)"/>
+  <text x="145" y="569" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--text)">修改指令</text>
+
+  <!-- C2: MO → 集 Agent -->
+  <line x1="190" y1="598" x2="450" y2="598" stroke="var(--brand)" stroke-width="1.5" marker-end="url(#ab)"/>
+  <rect x="250" y="584" width="100" height="18" rx="4" fill="var(--brand-soft)"/>
+  <text x="300" y="597" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--brand-text)">JSON 路由</text>
+
+  <!-- C3: 集 Agent → 资产层 (版本更新) -->
+  <line x1="455" y1="625" x2="595" y2="625" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#aac)"/>
+  <rect x="470" y="611" width="118" height="18" rx="4" fill="var(--accent-soft)"/>
+  <text x="529" y="624" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--accent-text)">资产层 Vn→Vn+1</text>
+
+  <!-- C4: 资产层 → DAG (版本变更通知) -->
+  <line x1="600" y1="650" x2="735" y2="650" stroke="var(--warning)" stroke-width="1.5" marker-end="url(#aw)"/>
+  <rect x="615" y="636" width="100" height="18" rx="4" fill="var(--surface)"/>
+  <text x="665" y="649" text-anchor="middle" font-family="var(--font-sans)" font-size="9" fill="var(--warning)">版本变更通知</text>
+
+  <!-- C5: DAG → 集 Agent (标记脏节点) -->
+  <line x1="735" y1="675" x2="460" y2="675" stroke="var(--warning)" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#aw)"/>
+  <rect x="550" y="661" width="118" height="18" rx="4" fill="var(--surface)"/>
+  <text x="609" y="674" text-anchor="middle" font-family="var(--font-sans)" font-size="9" fill="var(--warning)">标记脏节点</text>
+
+  <!-- C6: 集 Agent → State Context (增量重算) -->
+  <line x1="455" y1="700" x2="595" y2="700" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#aac)"/>
+  <rect x="470" y="686" width="118" height="18" rx="4" fill="var(--accent-soft)"/>
+  <text x="529" y="699" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--accent-text)">增量重算受影响节点</text>
+
+  <rect x="530" y="720" width="140" height="22" rx="4" fill="var(--surface)"/>
+  <text x="600" y="735" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--text-muted)">State Ctx: 仅重算脏节点</text>
+
+  <!-- C7: 集 Agent → 前端 -->
+  <line x1="455" y1="598" x2="845" y2="598" stroke="var(--chart-series-1)" stroke-width="1.5" marker-end="url(#as1)"/>
+  <rect x="560" y="584" width="130" height="18" rx="4" fill="var(--surface)"/>
+  <text x="625" y="597" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--text)">display: 更新后文档</text>
+
+  <!-- Phase separator -->
+  <line x1="20" y1="754" x2="900" y2="754" stroke="var(--border)" stroke-width="1" stroke-dasharray="6,3"/>
+
+  <!-- ============================================================ -->
+  <!-- CONTEXT ASSEMBLY COMPARISON -->
+  <!-- ============================================================ -->
+  <text x="460" y="780" text-anchor="middle" font-family="var(--font-sans)" font-size="14" font-weight="600" fill="var(--text)">上下文组装对比</text>
+
+  <!-- MO Context -->
+  <rect x="30" y="792" width="280" height="150" rx="8" fill="var(--surface)" stroke="var(--brand)" stroke-width="1"/>
+  <rect x="30" y="792" width="280" height="28" rx="8" fill="var(--brand)"/>
+  <rect x="30" y="808" width="280" height="12" rx="0" fill="var(--brand)"/>
+  <text x="170" y="811" text-anchor="middle" font-family="var(--font-sans)" font-size="12" font-weight="600" fill="var(--brand-on)">MO 上下文 (6层)</text>
+
+  <text x="48" y="838" font-family="var(--font-mono)" font-size="11" fill="var(--text)">① System Prompt</text>
+  <text x="48" y="856" font-family="var(--font-mono)" font-size="11" fill="var(--text)">② 阶段上下文</text>
+  <text x="48" y="874" font-family="var(--font-mono)" font-size="11" fill="var(--text)">③ 状态上下文 (仅索引)</text>
+  <text x="48" y="892" font-family="var(--font-mono)" font-size="11" fill="var(--text)">④ 会话历史 (去重后)</text>
+  <text x="48" y="910" font-family="var(--font-mono)" font-size="11" fill="var(--text)">⑤ 用户消息</text>
+
+  <text x="48" y="932" font-family="var(--font-sans)" font-size="10" fill="var(--text-muted)">≈ 1,000 tokens · 无 Project Context</text>
+
+  <!-- DA Context -->
+  <rect x="340" y="792" width="310" height="150" rx="8" fill="var(--surface)" stroke="var(--chart-series-1)" stroke-width="1"/>
+  <rect x="340" y="792" width="310" height="28" rx="8" fill="var(--chart-series-1)"/>
+  <rect x="340" y="808" width="310" height="12" rx="0" fill="var(--chart-series-1)"/>
+  <text x="495" y="811" text-anchor="middle" font-family="var(--font-sans)" font-size="12" font-weight="600" fill="var(--brand-on)">DA 上下文 (6层)</text>
+
+  <text x="358" y="838" font-family="var(--font-mono)" font-size="11" fill="var(--text)">① System Prompt</text>
+  <text x="358" y="856" font-family="var(--font-mono)" font-size="11" fill="var(--text)">② Project Context</text>
+  <text x="485" y="856" font-family="var(--font-sans)" font-size="10" fill="var(--accent-text)">prefix-cached</text>
+  <text x="358" y="874" font-family="var(--font-mono)" font-size="11" fill="var(--text)">③ 阶段上下文</text>
+  <text x="358" y="892" font-family="var(--font-mono)" font-size="11" fill="var(--text)">④ 状态上下文 (完整内容)</text>
+  <text x="358" y="910" font-family="var(--font-mono)" font-size="11" fill="var(--text)">⑤ 会话历史 (去重后)</text>
+  <text x="358" y="928" font-family="var(--font-mono)" font-size="11" fill="var(--text)">⑥ 用户消息</text>
+
+  <text x="358" y="932" font-family="var(--font-sans)" font-size="10" fill="var(--text-muted)">≈ 1,400 tokens (cache 后) · 含完整 Project Context</text>
+
+  <!-- Session History Dedup -->
+  <rect x="680" y="792" width="210" height="150" rx="8" fill="var(--surface)" stroke="var(--border)" stroke-width="0.5"/>
+  <text x="785" y="814" text-anchor="middle" font-family="var(--font-sans)" font-size="12" font-weight="600" fill="var(--text)">会话历史去重</text>
+  <line x1="695" y1="822" x2="875" y2="822" stroke="var(--border)"/>
+
+  <text x="695" y="842" font-family="var(--font-sans)" font-size="11" fill="var(--text)">保留: 对话流 + 意图</text>
+  <text x="695" y="862" font-family="var(--font-sans)" font-size="11" fill="var(--text-muted)">"好的" → 理解为确认</text>
+  <text x="695" y="882" font-family="var(--font-sans)" font-size="11" fill="var(--text-muted)">"太生硬了" → 修改请求</text>
+
+  <text x="695" y="906" font-family="var(--font-sans)" font-size="11" fill="var(--text)">替换: 产物引用</text>
+  <text x="695" y="926" font-family="var(--font-sans)" font-size="11" fill="var(--text-muted)">完整文档 → "V1.0 策划文档"</text>
+  <text x="695" y="942" font-family="var(--font-sans)" font-size="10" fill="var(--text-muted)">每轮 ~100 tokens</text>
+
+  <!-- ============================================================ -->
+  <!-- LEGEND -->
+  <!-- ============================================================ -->
+  <rect x="30" y="960" width="860" height="50" rx="8" fill="var(--surface)" stroke="var(--border)" stroke-width="0.5"/>
+
+  <line x1="50" y1="980" x2="80" y2="980" stroke="var(--brand)" stroke-width="1.5"/>
+  <text x="85" y="985" font-family="var(--font-sans)" font-size="11" fill="var(--text-muted)">路由/输入</text>
+
+  <line x1="165" y1="980" x2="195" y2="980" stroke="var(--accent)" stroke-width="1.5"/>
+  <text x="200" y="985" font-family="var(--font-sans)" font-size="11" fill="var(--text-muted)">记忆写入</text>
+
+  <line x1="290" y1="980" x2="320" y2="980" stroke="var(--warning)" stroke-width="1.5"/>
+  <text x="325" y="985" font-family="var(--font-sans)" font-size="11" fill="var(--text-muted)">DAG 编排</text>
+
+  <line x1="425" y1="980" x2="455" y2="980" stroke="var(--chart-series-1)" stroke-width="1.5"/>
+  <text x="460" y="985" font-family="var(--font-sans)" font-size="11" fill="var(--text-muted)">前端展示</text>
+
+  <line x1="565" y1="980" x2="595" y2="980" stroke="var(--text-muted)" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="600" y="985" font-family="var(--font-sans)" font-size="11" fill="var(--text-muted)">异步通知</text>
+
+  <text x="705" y="985" font-family="var(--font-sans)" font-size="11" fill="var(--text-muted)">prefix-cache 仅首次计费</text>
+  <rect x="850" y="976" width="8" height="8" rx="2" fill="var(--accent)"/>
+
+</svg>
